@@ -8,10 +8,11 @@ import (
 
 func main() {
 	r := gin.Default()
-	r.GET("/ping", func(c *gin.Context) {
-		c.JSON(http.StatusOK, gin.H{
-			"message": "pong",
+	r.LoadHTMLGlob("pages/*") //Load all file in the pages folder
+	r.GET("/main", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "main.html", gin.H{
+			"title": "here is my home now",
 		})
 	})
-	r.Run()
+	r.Run(":8080")
 }
