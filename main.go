@@ -11,7 +11,7 @@ func main() {
 	r := gin.Default()        //start the server
 	r.LoadHTMLGlob("pages/*") //Load all file in the pages folder
 
-	r.GET("/main", func(c *gin.Context) {
+	r.GET("/hmm", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "main.html", gin.H{
 			"title": "here is my home now",
 		})
@@ -30,6 +30,10 @@ func main() {
 		//show result
 		result := string(out)
 		c.String(http.StatusOK, "Result: %s", result)
+	})
+
+	r.GET("/status", func(c *gin.Context) {
+		c.HTML(http.StatusOK, "status.html", gin.H{})
 	})
 
 	//Gogo
