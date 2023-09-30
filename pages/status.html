@@ -1,13 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-    </head>
-    <body>
-        <h1>
-            Target DNS Server Status:
-        </h1>
-        <div>
+<head>
+  <title>Ping状况</title>
+</head>
+<body>
+  <h1>Ping状态</h1>
+  <p>目标IP地址: 8.8.8.8</p>
+  <p id="pingResult">正在进行Ping测试...</p>
+  <div id="statusIndicator"></div>
 
-        </div>
-    </body>
+  <script>
+    //ping 8.8.8.8
+    
+    function updatePingStatus() {
+      const targetIP = '8.8.8.8';
+      const pingResultElement = document.getElementById('pingResult');
+      const statusIndicator = document.getElementById('statusIndicator');
+
+      pingResultElement.textContent = '正在进行Ping测试...';
+      statusIndicator.style.backgroundColor = 'gray';
+
+      const pingStartTime = new Date().getTime();
+      const ping = new Image();
+
+      ping.onload = function () {
+        const pingEndTime = new Date().getTime();
+        const pingTime = pingEndTime - pingStartTime;
+
+        pingResultElement.textContent = `Ping回应时间：${pingTime}ms`;
+
+        if (pingTime > 15) {
+          statusIndicator.style.backgroundColor = 'red';
+        } else {
+          statusIndicator.style.backgroundColor = 'green';
+        }
+      };
+
+      ping.onerror = function () {
+        pingResultElement.textContent = 'Ping失败';
+        statusIndicator.style.backgroundColor = 'gray';
+      };
+
+      ping.src = `http://${targetIP}/favicon.ico?${pingStartTime}`;
+    }
+
+    // 每秒更新一次Ping状态
+    setInterval(updatePingStatus, 1000);
+    updatePingStatus(); // 初始状态更新
+  </script>
+</body>
 </html>
