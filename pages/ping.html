@@ -1,16 +1,13 @@
 <!DOCTYPE html>
 <head>
-
+    <title>PING (PONG) TOOL</title>
 </head>
 <body>
-    <H1 align = center>歡迎來到DNS連線測試中心</H1>
-    <div align = center>
-        <p align = center>輸入IP位置: </p>
-        <form action="/" method="post">
-            <input type="text" >
-            <br>
-            <input type="submit" value="send">
-        </form>
-        
-    </div>
+    <h1>Ping Tool web</h1>
+    <form action = "/pong" method = "post">
+        IP Adress : <input type = "text" name = "ip"/>
+        <input type="submit" value="Ping" />
+    </form>
+    
+    <div id="pingResult"></div>
 </body>

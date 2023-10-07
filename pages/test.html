@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ping Result</title>
+    <style>
+        /* 添加一些基本的 CSS 样式来美化表格 */
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: 20px auto;
+        }
+        th, td {
+            border: 1px solid #dddddd;
+            text-align: left;
+            padding: 8px;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Ping Result</h1>
+    <table>
+        <tr>
+            <th>Packet</th>
+            <th>Response</th>
+        </tr>
+        {{ range $line := .PingResultLines }}
+        <tr>
+            <td>{{ $line }}</td>
+        </tr>
+        {{ end }}
+    </table>
+</body>
+</html>
