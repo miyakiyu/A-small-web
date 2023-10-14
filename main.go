@@ -22,6 +22,7 @@ func main() {
 	r.GET("/ping", func(c *gin.Context) {
 		c.HTML(http.StatusOK, "ping.html", nil)
 	})
+
 	//get the ping result
 	r.POST("/pong", func(c *gin.Context) {
 		ip := c.PostForm("ip")
@@ -30,7 +31,6 @@ func main() {
 			println("Mission Failed successfully")
 		}
 		c.String(http.StatusOK, string(output))
-		// 將 ping 結果按行拆分為字符串切片
 	})
 
 	//Gogo
