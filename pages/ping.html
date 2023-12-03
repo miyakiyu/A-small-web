@@ -1,17 +1,69 @@
 <!DOCTYPE html>
+<html lang="en">
 <head>
     <title>PING (PONG) TOOL</title>
+    <style>
+        #pingResultContainer {
+            background-color: black;
+            color: white;
+            padding: 100px;
+            margin-top: 100px;
+            max-height: 200px;
+        }
+    </style>
 </head>
-
 <body>
-  <script>
-    
-
-  </script>
     <h1>Ping (PONG) Tool web</h1>
-    <form action = "/pong" method = "post">
-        IP Adress : <input type = "text" name = "ip"/>
-        <input type="submit" value="Ping" />
+    <form id="pingForm">
+        IP Address: <input type="text" id="ip" name="ip" />
+        <input type="button" value="Start Ping" onclick="startPingInterval()" />
+        <input type="button" value="Stop Ping" onclick="stopPingInterval()" />
     </form>
-    <div id="pingResult"></div>
+    <div id="pingResultContainer"></div>
+
+    <script>
+        var intervalId;
+        var stopPingFlag = false;
+
+        function startPingInterval() {
+            // Reset stop flag
+            stopPingFlag = false;
+
+            // Start pinging every 5 seconds
+            intervalId = setInterval(startPing, 5000);
+        }
+
+        function startPing() {
+            var ip = document.getElementById("ip").value;
+            var resultContainer = document.getElementById("pingResultContainer");
+
+            // Clear previous results
+            resultContainer.innerHTML = "";
+
+            // Send ping request
+            var xhr = new XMLHttpRequest();
+            xhr.open("POST", "/pong", true);
+            xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function () {
+                if (xhr.status === 200) {
+                    var response = xhr.responseText;
+                    resultContainer.innerHTML += "<p>" + response + "</p>";
+
+                    // Scroll to the bottom for dynamic display
+                    resultContainer.scrollTop = resultContainer.scrollHeight;
+                }
+            };
+
+            var params = "ip=" + encodeURIComponent(ip);
+            xhr.send(params);
+        }
+
+        function stopPingInterval() {
+            stopPingFlag = true;
+
+            // Stop the interval and clear the interval ID
+            clearInterval(intervalId);
+        }
+    </script>
 </body>
+</html>

@@ -8,6 +8,10 @@ import (
 	"os/exec"
 )
 
+func ping() {
+
+}
+
 func main() {
 	r := gin.Default()             //start the server
 	r.LoadHTMLGlob("pages/*.html") //Load all file in the pages folder
@@ -25,6 +29,7 @@ func main() {
 
 	//get the ping result
 	r.POST("/pong", func(c *gin.Context) {
+
 		ip := c.PostForm("ip")
 		output, err := exec.Command("ping", "-c", "5", ip).CombinedOutput()
 		if err != nil {
@@ -33,8 +38,6 @@ func main() {
 		c.String(http.StatusOK, string(output))
 	})
 
-	//get the ping result and network flow dynamic
-	//r.GET("/")
 	//Gogo
 	r.Run(":8080")
 }
