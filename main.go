@@ -33,6 +33,8 @@ func main() {
 		c.String(http.StatusOK, string(output))
 	})
 
+	//get the ping result and network flow dynamic
+	//r.GET("/")
 	//Gogo
 	r.Run(":8080")
 }
