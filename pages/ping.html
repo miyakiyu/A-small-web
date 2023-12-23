@@ -2,22 +2,16 @@
 <html lang="en">
 <head>
     <title>PING (PONG) TOOL</title>
-    <style>
-        #pingResultContainer {
-            background-color: black;
-            color: white;
-            padding: 100px;
-            margin-top: 100px;
-            max-height: 200px;
-        }
-    </style>
+    <link rel = "stylesheet" href="/css/background.css">
+    <link rel = "stylesheet" href="/css/button.css">
+    <link rel = "stylesheet" href="/css/text.css">
 </head>
 <body>
     <h1>Ping (PONG) Tool web</h1>
     <form id="pingForm">
         IP Address: <input type="text" id="ip" name="ip" />
-        <input type="button" value="Start Ping" onclick="startPingInterval()" />
-        <input type="button" value="Stop Ping" onclick="stopPingInterval()" />
+        <input class = "common_button" type="button" value="Start Ping" onclick="startPingInterval()" />
+        <input class = "common_button" type="button" value="Stop Ping" onclick="stopPingInterval()" />
     </form>
     <div id="pingResultContainer"></div>
 

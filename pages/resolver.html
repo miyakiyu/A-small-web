@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<head>
+    <title>Resolver Online</title>
+    <link rel = "stylesheet" href="/css/background.css">
+    <link rel = "stylesheet" href="/css/button.css">
+</head>
+<body>
+    <h1>Resolver online</h1>
+    <form id = "resolver_request" action="/run-a-out" method="post">
+    Name Server IP: <input type="text" id="nsip" name="nsip" />
+    Port: <input type="text" id="port" name="port" />
+    Domain Name: <input type="text" id="dn" name="dn" />
+    <input class ="common_button" type = "submit" value = "Start">
+    </form>
+    <div id="request_container">
+        <!-- Display the output here -->
+        {{.Output}}
+    </div>
+</body>

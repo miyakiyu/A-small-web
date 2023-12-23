@@ -3,15 +3,24 @@
         <title>
             Main Page
         </title>
+        <link rel = "stylesheet" href="/css/background.css">
+        <link rel = "stylesheet" href="/css/button.css">
     </head>
     <body>
         <div align = "center">
             <h2>
                 A simple Home page that show all the function below
             </h2>
+            <!-- 以下是執行ping的工具-->
             <div id="func">
-                <h3>Check DNS Status</h3>
-                <button onclick="window.location.href='/ping'">Click me to check!</button>
+                <h3>Ping (Pong) Tool</h3>
+                <button class="main_button" onclick="window.location.href='/ping'">You're ready to PING!</button>
+            </div>
+
+            <!-- 以下是執行resolver的工具-->
+            <div id = "func2">
+                <h3>Check the DNS Status</h3>
+                <button class="main_button" onclick="window.location.href='/resolver'">Check DNS Status</button>
             </div>
         </div>
     </body>
